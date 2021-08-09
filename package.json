@@ -2,13 +2,13 @@
   "name": "js-e2e-express-server",
   "version": "1.0.0",
   "description": "JavaScript server written with Express.js",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "doc": "docs",
     "test": "test"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/app.js",
     "start:dev": "npm run lint && nodemon --exec node src/index.js --unhandled-rejections=warn",
     "test": "jest --detectOpenHandles --coverage",
     "lint": "eslint src/**/*.js --fix"
@@ -37,9 +37,13 @@
     "supertest": "^6.1.1"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "osrs-json-api": "^1.4.5",
+    "request": "^2.88.2"
   },
   "prettier": {
     "printWidth": 80,
