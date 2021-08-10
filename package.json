@@ -4,13 +4,11 @@
   "description": "JavaScript server written with Express.js",
   "main": "index.js",
   "directories": {
-    "doc": "docs",
-    "test": "test"
+    "doc": "docs"
   },
   "scripts": {
     "start": "node src/index.js",
     "start:dev": "npm run lint && nodemon --exec node src/index.js --unhandled-rejections=warn",
-    "test": "jest --detectOpenHandles --coverage",
     "lint": "eslint src/**/*.js --fix"
   },
   "repository": {
