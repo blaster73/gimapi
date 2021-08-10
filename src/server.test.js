@@ -1,7 +1,7 @@
 const request = require('supertest');
 const { create } = require('./server.js');
 
-describe('root', () => {
+/*describe('root', () => {
 
     it('request root, returns html', async (done) => {
 
@@ -15,4 +15,4 @@ describe('root', () => {
                 done();
             }).catch(err => done(err));;
     });
-});
+});*/

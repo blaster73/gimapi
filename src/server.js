@@ -11,11 +11,11 @@ var request = require('request');
     next();
 };*/
 
-/*var appLogger = (req, res, next) => {
+var appLogger = (req, res, next) => {
     let method = req.method;
     let path = req.path;
     console.log(`${method} ${path} ${Date()}`);
-};*/
+};
 
 // fn to create express server
 const create = async () => {
@@ -37,13 +37,14 @@ const create = async () => {
     app.get('/player', function(req, res) {
         const { hiscores } = require('osrs-json-api');
         playerName = "" + req.query.pid;
-      
         hiscores.getPlayer(playerName)
         .then((message) => { res.send(message);})
         .catch(console.error);
-      
-        //res.send("No user found!");
     });
+
+    app.get('/', (req, res) => {
+        res.send('Welcome to Express');
+      });
 
     // Error handler
     /* eslint-disable no-unused-vars */
