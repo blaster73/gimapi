@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+var cors = require("cors");
+var request = require('request');
 
 // ignore request for FavIcon. so there is no error in browser
 const ignoreFavicon = (req, res, next) => {
@@ -18,18 +20,30 @@ var appLogger = (req, res, next) => {
 // fn to create express server
 const create = async () => {
 
-    // server
+    // server + cor + request
     const app = express();
+    app.use(cors());
 
     // configure nonFeature
     app.use(ignoreFavicon);
 
     // root route - serve static file
-    app.get('/', (req, res, next) => {
+    /*app.get('/', (req, res, next) => {
         res.sendFile(path.join(__dirname, '../public/client.html'));
         next();
     });
-    app.use(appLogger);
+    app.use(appLogger);*/
+
+    app.get('/player', function(req, res) {
+        const { hiscores } = require('osrs-json-api');
+        playerName = "" + req.query.pid;
+      
+        hiscores.getPlayer(playerName)
+        .then((message) => { res.send(message);})
+        .catch(console.error);
+      
+        //res.send("No user found!");
+    });
 
     // Error handler
     /* eslint-disable no-unused-vars */
