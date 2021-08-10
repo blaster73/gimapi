@@ -4,18 +4,18 @@ var cors = require("cors");
 var request = require('request');
 
 // ignore request for FavIcon. so there is no error in browser
-const ignoreFavicon = (req, res, next) => {
+/*const ignoreFavicon = (req, res, next) => {
     if (req.originalUrl.includes('favicon.ico')) {
         res.status(204).end();
     }
     next();
-};
+};*/
 
-var appLogger = (req, res, next) => {
+/*var appLogger = (req, res, next) => {
     let method = req.method;
     let path = req.path;
     console.log(`${method} ${path} ${Date()}`);
-};
+};*/
 
 // fn to create express server
 const create = async () => {
@@ -25,7 +25,7 @@ const create = async () => {
     app.use(cors());
 
     // configure nonFeature
-    app.use(ignoreFavicon);
+    //app.use(ignoreFavicon);
 
     // root route - serve static file
     /*app.get('/', (req, res, next) => {
